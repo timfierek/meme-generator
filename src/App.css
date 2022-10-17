@@ -21,10 +21,11 @@
 
 /********************************************/
 
-.meme {
+.memeForm {
   padding: 6% 4% 0 4%;
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 .meme .inputs {
@@ -34,7 +35,7 @@
 }
 
 .meme input[type=text] {
-  width: 230px;
+  width:100%;
   height: 35px;
   border: 1px solid #D5D4D8;
   border-radius: 5px;
@@ -59,5 +60,11 @@
 
 .meme button:hover {
   cursor: pointer;
+}
+
+.meme img {
+  padding-top: 4%;
+  padding-bottom: 4%;
+  max-width: 100%;
 }
 
