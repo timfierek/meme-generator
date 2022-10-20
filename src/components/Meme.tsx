@@ -9,9 +9,9 @@ function Meme() {
             bottomText: "",
             randomImage: ""
         }
-    )
+    );
     
-    function getMemeImage(){
+    function getMemeImage() {
         const memes = allMemeImages.data.memes;
         const newMemeUrl = memes[Math.floor(Math.random()*memes.length)].url;
         
@@ -23,15 +23,42 @@ function Meme() {
         })
     }
 
+    function handleChange(event: any) {
+        let {name, value} = event.target;
+
+        setMeme(prevMeme => {
+            return {
+                ...prevMeme,
+                [name]: value
+            }
+        })
+    }
+
     return(
         <div className="meme">
             <div className="memeForm">
                 <div className="inputs">
-                    <input type="text" placeholder="top text"/>
-                    <input type="text" placeholder="bottom text"/>
+                    <input 
+                        type="text"
+                        name="topText" 
+                        value={meme.topText}
+                        placeholder="top text"
+                        onChange={handleChange}
+                    />
+                    <input 
+                        type="text"
+                        name="bottomText" 
+                        value={meme.bottomText}
+                        placeholder="bottom text"
+                        onChange={handleChange}
+                    />
                 </div>
                 <button onClick={getMemeImage}>Get a new meme image</button>
-                <img src={meme.randomImage} alt="" />
+                <div className="image">
+                    <img src={meme.randomImage} alt="" />
+                    <h2 className="meme-text top">{meme.topText}</h2>
+                    <h2 className="meme-text bottom">{meme.bottomText}</h2>
+                </div>
             </div>
         </div>
     );
